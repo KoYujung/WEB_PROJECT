@@ -4,52 +4,46 @@
     font-weight: 700;
     font-style: normal;
 }
-
 * {
     font-family: TTWanjudaedunsancheB;
 }
-
 a {
     text-decoration: none;
     color: black;
     font-size: 40px;
 }
-
 header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 10px;
+    margin-top: 20px;
 }
-
 #leftButton {
     margin-left: 8%;
 }
-
 #otherType {
     width: 200px;
     height: 100px;
     border: 0;
     border-radius: 20px;
 }
-
 main {
     background-color: #EEEEEE;
     height: 650px;
     border-radius: 10px;
     margin-left: 8%;
     margin-right: 8%;
-    margin-top: 50px;
+    margin-top: 30px;
     text-align: center;
+    padding-right: 100px;
 }
-
 #foodType {
     color: rgb(231, 76, 60);
     font-size: 100px;
     text-align: center;
     margin-left: 25%;
 }
-
 #otherMenu {
     width: 350px;
     height: 100px;
@@ -57,11 +51,6 @@ main {
     border-radius: 20px;
     background-color: white;
 }
-/* 
-#otherMenu > a {
-    color: rgb(231, 76, 60);
-} */
-
 #chooseMenu {
     width: 350px;
     height: 100px;
@@ -69,17 +58,30 @@ main {
     border-radius: 20px;
     background-color: rgb(231, 76, 60);
 }
-
 #chooseMenu > a {
     color: white;
 }
-
 #img {
+    float: left;
+    width: 50%;
+    height: 350px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
-
+#detail {
+    float: right;
+    width: 50%;
+    height: 350px;
+    padding-bottom: 50px;
+    font-size: 50px;
+    text-align: start;
+}
+#buttons {
+    width: 100%;
+    clear: both;
+    padding-top: 50px;
+}
 img {
     border-radius: 10px;
-    width: 350px;
+    width: 400px;
 }
