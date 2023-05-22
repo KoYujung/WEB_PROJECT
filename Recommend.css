@@ -36,7 +36,7 @@ main {
     margin-right: 8%;
     margin-top: 30px;
     text-align: center;
-    padding-right: 100px;
+    /* padding-right: 100px; */
 }
 #foodType {
     color: rgb(231, 76, 60);
@@ -63,14 +63,14 @@ main {
 }
 #img {
     float: left;
-    width: 50%;
+    width: 40%;
     height: 350px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 #detail {
     float: right;
-    width: 50%;
+    width: 60%;
     height: 350px;
     padding-bottom: 50px;
     font-size: 50px;
