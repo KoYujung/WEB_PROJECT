@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    const dessert = [
+        {name : '딸기케이크', price : 5500},
+        {name : '버터바', price : 4500},
+        {name : '약과타르트', price : 4000},
+        {name : '카스테라꽈배기', price : 3000},
+    ];
+
+    const num = Math.floor(Math.random() * 4);
+    console.log(num);
+    
+    document.write(dessert[num].price);
+    document.write(`<img src = ${dessert[num].name}.jpg width = 300>`);
+</script>
+</html>
