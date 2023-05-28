@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Recommend.css">
-    <title>중식 추천</title>
+    <title>메뉴 추천</title>
 </head>
 <body>
     <header>
@@ -14,10 +14,10 @@
         </div>
     </header>
     <main>
-        <div id="img"><img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg"><!--메뉴 사진--></div>
+        <div id="img"><img src="" id="menuImage"><!--메뉴 사진--></div>
         <div id="detail">
-            <h2>비빔밥<!--메뉴 이름--></h2>
-            <p>비빔밥은 어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구<!--메뉴 설명--></p>
+            <h2 id="menuName"><!--메뉴 이름--></h2>
+            <p id="menuDescription"><!--메뉴 설명--></p>
         </div>
         <div id="buttons">
             <button id="otherMenu"><a href="Main.html">다른 메뉴</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -25,7 +25,28 @@
     </main>
 </body>
 <script>
-    
+    const menuList = [
+        { name: '짜장면', description: '짜장면은 어쩌구 저쩌구입니다.' },
+        { name: '짬뽕',  description: '짬뽕은 어쩌구 저쩌구입니다.' },
+        { name: '양장피',  description: '양장피는 어쩌구 저쩌구입니다.' },
+        { name: '마라탕',  description: '마라탕은 어쩌구 저쩌구입니다.' },
+        { name: '마라샹궈',  description: '마라샹궈는 어쩌구 저쩌구입니다.' },
+    ];
+
+    function getRandomMenu() {
+        const randomIndex = Math.floor(Math.random() * menuList.length);
+        return menuList[randomIndex];
+    }
+
+    window.onload = function() {
+        const randomMenu = getRandomMenu();
+        const menuImage = document.getElementById('menuImage');
+        const menuName = document.getElementById('menuName');
+        const menuDescription = document.getElementById('menuDescription');
+
+        menuImage.src = 'Food.images/' + randomMenu.name + '.png';
+        menuName.innerText = randomMenu.name;
+        menuDescription.innerText = randomMenu.description;
+    };
 </script>
 </html>
-<!-- 음식 사진, 음식 이름,  간단한 메뉴설명(알러지나 기타사항)-->
