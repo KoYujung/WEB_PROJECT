@@ -9,18 +9,18 @@
 </head>
 <body>
     <header>
-        <div id="leftButton"><button id="otherType"><a href="#">다른 종류</a></button></div>
+        <div id="leftButton"><button id="otherType"><a href="Main.html">다른 종류</a></button></div>
         <div id="foodType">한식</div>
         </div>
     </header>
     <main>
-        <div id="menuImg"><!--<img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg" id="menuImg">메뉴 사진--></div>
+        <div id="img"><img src="" id="menuImg"></div>
         <div id="detail">
-            <h2 id="menuName">비빔밥<!--메뉴 이름--></h2>
-            <p id="menuDetail">비빔밥은 어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구<!--메뉴 설명--></p>
+            <h2 id="menuName"></h2>
+            <p id="menuDetail"></p>
         </div>
         <div id="buttons">
-            <button id="otherMenu"><a href="Main.html">다른 메뉴</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="otherMenu"><a href="#">다른 메뉴</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button id="chooseMenu"><a href="Menu.html">메뉴 선택</a></button>
         </div>
     </main>
@@ -29,20 +29,27 @@
     const $menuImg = document.querySelector('#menuImg');
     const $menuName = document.querySelector('#menuName');
     const $menuDetail = document.querySelector('#menuDetail');
-
+    const $otherMenu = document.querySelector('#otherMenu');
 
     const KoreanMenu = [
-        {name : '김치찌개', detail : ''},
-        {name : '육회비빔밥', detail : ''},
-        {name : '삼겹살', detail : ''},
-        {name : '순대국밥', detail : ''},
-        {name : '불고기전골', detail : ''},
+        { name : '김치찌개', detail : '김치찌개 김치찌개'},
+        { name : '육회비빔밥', detail : '육회비빔밥 육회비빔밥'},
+        { name : '삼겹살', detail : '삼겹살 삼겹살'},
+        { name : '순대국밥', detail : '순대국밥 순대국밥'},
+        { name : '불고기전골', detail : '불고기전골 불고기전골'},
     ];
 
-    $menuName.textContent = KoreanMenu[2].name;
-    $menuImg.textContent =  document.write(`<img src = ${KoreanMenu[2].name}.jpg width = 300>`);
-    // document.write(`<img src = ${KoreanMenu[2].name}.jpg width = 300>`);
+    const randMenu = Math.floor(Math.random() * 5);
 
+    $menuName.textContent = KoreanMenu[randMenu].name;
+    $menuDetail.textContent = KoreanMenu[randMenu].detail;
+    $menuImg.src = `Food.images/${KoreanMenu[randMenu].name}.jpg`;
+
+    const loadOtherMenu = () => {
+        location.reload();
+    };
+
+    $otherMenu.addEventListener('click',loadOtherMenu);
 </script>
 </html>
 <!--  김치찌개 육회비빔밥 삼겹살 순대국밥 불고기전골
