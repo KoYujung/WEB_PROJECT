@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <div id="leftButton"><button id="otherType"><a href="#">다른 종류</a></button></div>
+        <div id="leftButton"><button id="otherType"><a href="Main.html">다른 종류</a></button></div>
         <div id="foodType" style="color: rgb(243, 156, 18);">양식</div>
         </div>
     </header>
@@ -21,14 +21,15 @@
         </div>
         <div id="buttons">
             <button id="otherMenu"><a href="Main.html">다른 메뉴</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button id="chooseMenu" style="background-color: rgb(243, 156, 18);"><a href="#">메뉴 선택</a></button>
+            <button id="chooseMenu" style="background-color: rgb(243, 156, 18);"><a href="Menu.html">메뉴 선택</a></button>
         </div>
     </main>
 </body>
 <script>
-    const $foodType = document.querySelector('#foodType');
+    const $menuImg = document.querySelector('#menuImg');
     const $menuName = document.querySelector('#menuName');
     const $menuDetail = document.querySelector('#menuDetail');
+    const $otherMenu = document.querySelector('#otherMenu'); //다른메뉴
 
     const WesternMenu = [
         { name : '피자', detail : '피자'},
@@ -44,7 +45,7 @@
     $menuDetail.textContent = WesternMenu[randMenu].detail;
     $menuImg.src = `Food.images/${WesternMenu[randMenu].name}.jpg`;
 
-    const loadOtherMenu = () => {
+    const loadOtherMenu = () => {   //현재 페이지 reload
         location.reload();
     };
 
