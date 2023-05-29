@@ -35,10 +35,20 @@
         { name : '치킨', detail : '치킨'},
         { name : '파스타', detail : '파스타'},
         { name : '햄버거', detail : '햄버거'},
-        { name : '미트볼', detail : '미트볼'},
+        { name : '스테이크', detail : '스테이크'},
     ];
 
     const randMenu = Math.floor(Math.random() * 5);
+
+    $menuName.textContent = KoreanMenu[randMenu].name;
+    $menuDetail.textContent = KoreanMenu[randMenu].detail;
+    $menuImg.src = `Food.images/${KoreanMenu[randMenu].name}.jpg`;
+
+    const loadOtherMenu = () => {
+        location.reload();
+    };
+
+    $otherMenu.addEventListener('click',loadOtherMenu);
 
 </script>
 </html>
