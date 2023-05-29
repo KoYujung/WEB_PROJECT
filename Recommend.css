@@ -77,6 +77,9 @@ main {
     padding-top: 50px;
     padding-bottom: 50px;
 }
+#menuImg {
+    padding-left: 120px;
+}
 #detail {
     float: right;
     width: 60%;
@@ -84,6 +87,10 @@ main {
     padding-bottom: 50px;
     font-size: 50px;
     text-align: start;
+}
+#menuDetail {
+    padding-right: 50px;
+    font-size: 40px;
 }
 #buttons {
     width: 100%;
