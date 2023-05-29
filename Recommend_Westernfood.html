@@ -16,8 +16,8 @@
     <main>
         <div id="img"><img src="" id="menuImg"></div>
         <div id="detail">
-            <h2 id="menuName"><!--메뉴 이름--></h2>
-            <p id="menuDetail"><!--메뉴 설명--></p>
+            <h2 id="menuName"></h2>
+            <p id="menuDetail"></p>
         </div>
         <div id="buttons">
             <button id="otherMenu"><a href="#">다른 메뉴</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -26,12 +26,12 @@
     </main>
 </body>
 <script>
-    const $menuImg = document.querySelector('#menuImg');
-    const $menuName = document.querySelector('#menuName');
-    const $menuDetail = document.querySelector('#menuDetail');
-    const $otherMenu = document.querySelector('#otherMenu'); //다른메뉴
+    const $menuImg = document.querySelector('#menuImg');    //메뉴 사진
+    const $menuName = document.querySelector('#menuName');  //메뉴 이름
+    const $menuDetail = document.querySelector('#menuDetail');  //메뉴 세부
+    const $otherMenu = document.querySelector('#otherMenu'); //다른 메뉴
 
-    const WesternMenu = [
+    const WesternMenu = [   //양식 종류 5가지 배열
         { name : '피자', detail : '피자'},
         { name : '치킨', detail : '치킨'},
         { name : '파스타', detail : '파스타'},
@@ -40,7 +40,8 @@
     ];
 
     const randMenu = Math.floor(Math.random() * 5);
-
+    //Math.floor(): 가로 안의 내용을 소숫점을 제외한 정수부분 나타냄
+    //Math.random(): 0-5 실수 랜덤 선택
     $menuName.textContent = WesternMenu[randMenu].name;
     $menuDetail.textContent = WesternMenu[randMenu].detail;
     $menuImg.src = `Food.images/${WesternMenu[randMenu].name}.jpg`;
