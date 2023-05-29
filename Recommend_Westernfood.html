@@ -20,6 +20,7 @@
             <p id="menuDetail"></p>
         </div>
         <div id="buttons">
+            <!-- &nbsp: 공백 -->
             <button id="otherMenu"><a href="#">다른 메뉴</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button id="chooseMenu" style="background-color: rgb(243, 156, 18);"><a href="Menu.html">메뉴 선택</a></button>
         </div>
@@ -32,16 +33,16 @@
     const $otherMenu = document.querySelector('#otherMenu'); //다른 메뉴
 
     const WesternMenu = [   //양식 종류 5가지 배열
-        { name : '피자', detail : '피자'},
-        { name : '치킨', detail : '치킨'},
-        { name : '파스타', detail : '파스타'},
-        { name : '햄버거', detail : '햄버거'},
-        { name : '스테이크', detail : '스테이크'},
+        { name : '피자', detail : '피자'},  //WesternMenu[0]
+        { name : '치킨', detail : '치킨'},  //WesternMenu[1]
+        { name : '파스타', detail : '파스타'},  //WesternMenu[2]
+        { name : '햄버거', detail : '햄버거'},  //WesternMenu[3]
+        { name : '스테이크', detail : '스테이크'},  //WesternMenu[4]
     ];
 
     const randMenu = Math.floor(Math.random() * 5);
     //Math.floor(): 가로 안의 내용을 소숫점을 제외한 정수부분 나타냄
-    //Math.random(): 0-5 실수 랜덤 선택
+    //Math.random()*5: 0이상 5미만 실수 랜덤 선택
     $menuName.textContent = WesternMenu[randMenu].name;
     $menuDetail.textContent = WesternMenu[randMenu].detail;
     $menuImg.src = `Food.images/${WesternMenu[randMenu].name}.jpg`;
