@@ -14,10 +14,10 @@
         </div>
     </header>
     <main>
-        <div id="img"><img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg"><!--메뉴 사진--></div>
+        <div id="img"><img src="" id="menuImg"></div>
         <div id="detail">
-            <h2 id="menuName">비빔밥<!--메뉴 이름--></h2>
-            <p id="menuDetail">비빔밥은 어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구<!--메뉴 설명--></p>
+            <h2 id="menuName"><!--메뉴 이름--></h2>
+            <p id="menuDetail"><!--메뉴 설명--></p>
         </div>
         <div id="buttons">
             <button id="otherMenu"><a href="Main.html">다른 메뉴</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -40,9 +40,9 @@
 
     const randMenu = Math.floor(Math.random() * 5);
 
-    $menuName.textContent = KoreanMenu[randMenu].name;
-    $menuDetail.textContent = KoreanMenu[randMenu].detail;
-    $menuImg.src = `Food.images/${KoreanMenu[randMenu].name}.jpg`;
+    $menuName.textContent = WesternMenu[randMenu].name;
+    $menuDetail.textContent = WesternMenu[randMenu].detail;
+    $menuImg.src = `Food.images/${WesternMenu[randMenu].name}.jpg`;
 
     const loadOtherMenu = () => {
         location.reload();
