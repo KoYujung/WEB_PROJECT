@@ -42,25 +42,25 @@
 
         { name : '육회비빔밥', 
         detail : '비빔밥의 유래에 관하여는 여러가지 설들이 있다. 동학농민혁명 때 부족한 음식들을 비벼 나눠 먹었다는 전주비빔밥 유래설, 진주성 싸움 때의 진주육회비빔밥 유래설 등이 그런 것이다. 하지만 명확한 근거는 없다.',
-        cal : '465',
+        cal : '531',
         price : '10000'
         },
 
         { name : '삼겹살', 
         detail : '삼겹살은 돼지의 갈비 부근에 붙은 돼지 뱃살 부위를 지칭한다. 비계가 세 겹으로 겹쳐 보이기 때문에 삼겹살로 불린다. 국내 생산량만으로는 수요를 맞추기 빠듯해서 수입도 많이 하고있다.',
-        cal : '465',
+        cal : '680',
         price : '12000'
         },
 
         { name : '순대국밥', 
         detail : '순대국밥은 경제 성장기의 우리나라에서는 노동 계층의 영혼의 음식의 위치에 있었다. 설렁탕도 사먹기 쉽지 않은 형편이라도 사골 국물과 고기 건더기를 푸짐하게 먹을 수 있는 저렴한 외식거리로는 아직도 부동의 1위다.',
-        cal : '465',
+        cal : '750',
         price : '7000'
         },
 
         { name : '갈비찜', 
         detail : '그냥 갈비찜 하면 보통은 소갈비를 이용한 찜 요리를 의미한다. 20세기 중반까지는 소득 수준이 낮고 소고기 가격이 높았기 때문에 어느 정도 경제적 여유가 있는 집이 아니면 먹기 어려운 부자 음식이었다.',
-        cal : '465',
+        cal : '652',
         price : '32000'
         }
 
@@ -77,7 +77,6 @@
         $menuDetail.textContent = selectedMenu.detail;
         $menuImg.src = `Food.images/${selectedMenu.name}.jpg`;
 
-         // Pass the selected menu details to the Menu.html page
         const menuParams = `?name=${selectedMenu.name}&cal=${selectedMenu.cal}&price=${selectedMenu.price}`;
         const menuPageUrl = `Menu.html${menuParams}`;
         $chooseMenu.href = menuPageUrl;
