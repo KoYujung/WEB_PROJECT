@@ -18,8 +18,7 @@
         #EMain {
             float: right;
             width: 60%;
-            /* height: 800px; */
-            /* margin-top: 70px; */
+            height: 800px;
         }
         #CImg {
         align-self: flex-end;
@@ -29,36 +28,33 @@
             display: block;
         }
         .item-bg {
-            font-size: 50px;
+            font-size: 40px;
             text-align: center;
-            padding: 200px;
+            padding: 100px;
             background-image: url('Food.images/영수증.jpeg');
             background-position: center;
-            background-size: 600px;
+            background-size: 500px;
             background-repeat: no-repeat;
+        }
+
+        span {
+            display: inline;
         }
     </style>
 
 </head>
 <body>
-    <div id="EImg"><img src="" id="menuImg"></div>
+    <div id="EImg"><img src="" id="menuImg" width="700px"></div>
     <div id="EMain">
         <div class="item-bg">
-            <div>오늘의 메뉴</div>
-            <hr style=" border-top: 3px dotted;" width="75%">
-            <p>메뉴 이름: <div id="menuName"></div></p>
-            <p>칼로리: <span id="menuCal"></span></p>
-            <p>가격: <span id="menuPrice"></span></p>
+            <h2>오늘의 메뉴</h2>
+            <hr style=" border-top: 2px dashed;" width="50%">
+            <p>메뉴 이름 : <span id="menuName"></span></p>
+            <p>칼로리 : <span id="menuCal"></span></p>
+            <hr style=" border-top: 2px dashed;" width="50%">
+            <p>가격 : <span id="menuPrice"></span></p>
         </div>
     </div>
-
-
-    <!-- <div>
-        <h2 id="menuName"></h2>
-        <p>칼로리: <span id="menuCal"></span></p>
-        <p>가격: <span id="menuPrice"></span></p> 
-        <img src="" id="menuImg">
-    </div> -->
 
     <script>
         const $menuName = document.querySelector('#menuName');
