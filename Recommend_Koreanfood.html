@@ -77,9 +77,11 @@
         $menuDetail.textContent = selectedMenu.detail;
         $menuImg.src = `Food.images/${selectedMenu.name}.jpg`;
 
-        const menuParams = `?name=${selectedMenu.name}&cal=${selectedMenu.cal}&price=${selectedMenu.price}`;
-        const menuPageUrl = `Menu.html${menuParams}`;
-        $chooseMenu.href = menuPageUrl;
+        const menuParams = `name=${encodeURIComponent(selectedMenu.name)}&cal=${encodeURIComponent(selectedMenu.cal)}&price=${encodeURIComponent(selectedMenu.price)}`;
+        const menuPageUrl = `KoreanReceipt.html?${menuParams}`;
+        $chooseMenu.addEventListener('click', () => {
+            window.location.href = menuPageUrl;
+        });
     }
 
     const loadOtherMenu = () => {

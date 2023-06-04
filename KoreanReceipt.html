@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Recommend.css">
+    <title>한식 영수증</title>
+    <style>
+        #EImg {
+            float: left;
+            width: 40%;
+            height: 600px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+        #EMain {
+            float: right;
+            width: 60%;
+            /* height: 800px; */
+            /* margin-top: 70px; */
+        }
+        #CImg {
+        align-self: flex-end;
+        }
+        span {
+            line-height: 80px;
+            display: block;
+        }
+        .item-bg {
+            font-size: 50px;
+            text-align: center;
+            padding: 200px;
+            background-image: url('Food.images/영수증.jpeg');
+            background-position: center;
+            background-size: 600px;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="EImg"><img src="" id="menuImg"></div>
+    <div id="EMain">
+        <div class="item-bg">
+            <div>오늘의 메뉴</div>
+            <hr style=" border-top: 3px dotted;" width="75%">
+            <p>메뉴 이름: <div id="menuName"></div></p>
+            <p>칼로리: <span id="menuCal"></span></p>
+            <p>가격: <span id="menuPrice"></span></p>
+        </div>
+    </div>
+
+
+    <!-- <div>
+        <h2 id="menuName"></h2>
+        <p>칼로리: <span id="menuCal"></span></p>
+        <p>가격: <span id="menuPrice"></span></p> 
+        <img src="" id="menuImg">
+    </div> -->
+
+    <script>
+        const $menuName = document.querySelector('#menuName');
+        const $menuCal = document.querySelector('#menuCal');
+        const $menuPrice = document.querySelector('#menuPrice');
+        const $menuImg = document.querySelector('#menuImg');
+
+        const urlParams = new URL(window.location.href).searchParams;
+
+        const menuName = urlParams.get('name');
+        const menuCal = urlParams.get('cal');
+        const menuPrice = urlParams.get('price');
+
+        console.log(menuName);
+
+        $menuName.textContent = menuName;
+        $menuCal.textContent = menuCal + "kcal";
+        $menuPrice.textContent = menuPrice + "원";
+        $menuImg.src = `Food.images/${menuName}.jpg`;
+    </script>
+</body>
+</html>
