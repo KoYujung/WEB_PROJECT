@@ -14,18 +14,24 @@
         </div>
     </header>
     <main>
-        <div id="img"><img src="" id="menuImage"><!--메뉴 사진--></div>
+        <div id="img"><img src="" id="menuImg"></div>
         <div id="detail">
             <h2 id="menuName"><!--메뉴 이름--></h2>
-            <p id="menudetail"><!--메뉴 설명--></p>
+            <p id="menuDetail"><!--메뉴 설명--></p>
         </div>
         <div id="buttons">
             <button id="otherMenu"><a>다른 메뉴</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button id="chooseMenu" style="background-color: rgb(249, 222, 3);"><a href="ChineseReceipt.html">메뉴 선택</a></button>
+        <button id="chooseMenu" style="background-color: rgb(249, 222, 3);"><a>메뉴 선택</a></button>
     </main>
 </body>
 <script>
-    const menuList = [
+    const $menuImg = document.querySelector('#menuImg');
+    const $menuName = document.querySelector('#menuName');
+    const $menuDetail = document.querySelector('#menuDetail');
+    const $otherMenu = document.querySelector('#otherMenu');
+    const $chooseMenu = document.querySelector('#chooseMenu');
+
+    const ChineseMenu = [
         { name: '짜장면', 
         detail: '짜장면은 튀긴 춘장과 야채·고기를 식용유에 볶아서 만든 것을 면에 비벼 먹는 한국식 중화 요리이다. 중식인 작장면이 한국식으로 변형 및 현지화된 요리.',
         cal: '864',
@@ -48,29 +54,31 @@
         price: '15000' },
     ];
 
-    function getRandomMenu() {
-        const randomIndex = Math.floor(Math.random() * menuList.length);
-        return menuList[randomIndex];
-    }
-
-    window.onload = function() {
-        const randomMenu = getRandomMenu();
-        console.log(randomMenu)
-        const menuImage = document.getElementById('menuImage');
-        const menuName = document.getElementById('menuName');
-        const menudetail = document.getElementById('menudetail');
-
-        menuImage.src = 'Food.images/' + randomMenu.name + '.png';
-        menuName.innerText = randomMenu.name;
-        menudetail.innerText = randomMenu.detail;
-
-        localStorage.setItem("menuName", randomMenu.name);// localStorage에 값을 저장
-        localStorage.setItem("menudetail", randomMenu.detail);
-        localStorage.setItem("menucal", randomMenu.cal);
-        localStorage.setItem("menuprice", randomMenu.price);
+    const getRandomMenu = () => {
+        const randMenu = Math.floor(Math.random() * ChineseMenu.length);
+        return ChineseMenu[randMenu];
     };
-    otherMenu.addEventListener('click', function() {
-        location.reload();
+
+    const loadMenu = () => {
+        const selectedMenu = getRandomMenu();
+        $menuName.textContent = selectedMenu.name;
+        $menuDetail.textContent = selectedMenu.detail;
+        $menuImg.src = `Food.images/${selectedMenu.name}.png`;
+
+        const menuParams = `name=${encodeURIComponent(selectedMenu.name)}&cal=${encodeURIComponent(selectedMenu.cal)}&price=${encodeURIComponent(selectedMenu.price)}`;
+        const menuPageUrl = `ChineseReceipt.html?${menuParams}`;
+        $chooseMenu.addEventListener('click', () => {
+        window.location.href = menuPageUrl;
     });
+}
+
+    const loadOtherMenu = () => {
+        location.reload();
+    };
+
+    $otherMenu.addEventListener('click',loadOtherMenu);
+    $chooseMenu.addEventListener('click', loadMenu);
+
+    loadMenu();
 </script>
 </html>
