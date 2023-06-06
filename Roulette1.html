@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>게임</title>
+    <link rel="stylesheet" href="Recommend.css">
+    <style>
+        input {
+            width: 75px;
+            height: 25px;
+            font-size: 25px;
+            border-radius: 5px;
+        }
+        button {
+            width: 100px;
+            height: 50px;
+            font-size: 30px;
+            border: 0;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        body {
+            text-align: center;
+            margin: 50px;
+        }
+        #main {
+            width: 70%;
+            margin: auto;
+        }
+        #result {
+            color: rgb(231, 122, 100);
+        }
+        .name-input {
+            margin-left: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+    <h1>참가 인원을 입력해주세요</h1>
+    <h1>인원수 : <input type="number" id="count"></h1>
+    <div id="nameInputs">
+      <!-- 이름 입력 필드를 인원수만큼 생성 -->
+    </div>
+    <br>
+    <button onclick="startGame()">시작</button>
+    <button onclick="stopGame()">정지</button>
+    <h1>당첨 : <span id="result"></span></h1>
+    </div>
+  </body>
+  <script>
+    var names = [];
+    var interval;
+
+    function startGame() {
+        var countInput = document.getElementById("count");
+        var nameInputs = document.getElementsByClassName("name");
+
+        // 인원수와 이름들을 가져옴
+        var count = parseInt(countInput.value);
+        for (var i = 0; i < count; i++) {
+            names.push(nameInputs[i].value);
+        }
+
+        // 게임 시작
+        var result = document.getElementById("result");
+        var index = 0;
+        interval = setInterval(function () {
+            result.innerHTML = names[index];
+            index = (index + 1) % count;
+        }, 50);
+    }
+
+    function stopGame() {
+        clearInterval(interval);
+    }
+
+    var countInput = document.getElementById("count");
+    var nameInputsContainer = document.getElementById("nameInputs");
+
+    countInput.addEventListener("input", function () {
+        var count = parseInt(countInput.value);
+
+        // 기존에 생성된 이름 입력 필드 삭제
+        while (nameInputsContainer.firstChild) {
+        nameInputsContainer.removeChild(nameInputsContainer.firstChild);
+        }
+
+        // 새로운 이름 입력 필드 생성
+        for (var i = 0; i < count; i++) {
+            var nameInput = document.createElement("input");
+            nameInput.setAttribute("class", "name name-input");
+            nameInput.setAttribute("placeholder", "이름 " + (i + 1));
+            nameInputsContainer.appendChild(nameInput);
+        }
+    });
+</script>
+</html>
