@@ -58,21 +58,20 @@
                 </p>
             </div>
         </div>
-
-        <script>
-            const $menuName = document.querySelector("#menuName");
-            const $menuCal = document.querySelector("#menuCal");
-            const $menuPrice = document.querySelector("#menuPrice");
-            const $menuImg = document.querySelector("#menuImg");
-
-            const selectedMenu = JSON.parse(localStorage.getItem("selectedMenu"));
-            console.log(selectedMenu);
-
-            $menuName.innerHTML = selectedMenu.name;
-            $menuCal.innerHTML = selectedMenu.cal;
-            $menuPrice.textContent = selectedMenu.price;
-            $menuImg.src = `${selectedMenu.src}`;
-            
-        </script>
     </body>
+    <script>
+        const $menuName = document.querySelector("#menuName");
+        const $menuCal = document.querySelector("#menuCal");
+        const $menuPrice = document.querySelector("#menuPrice");
+        const $menuImg = document.querySelector("#menuImg");
+
+        const selectedMenu = JSON.parse(localStorage.getItem("selectedMenu"));
+        console.log(selectedMenu);
+
+        $menuName.innerHTML = selectedMenu.name;
+        $menuCal.innerHTML = selectedMenu.cal;
+        $menuPrice.textContent = selectedMenu.price;
+        $menuImg.src = `${selectedMenu.src}`;
+        
+    </script>
 </html>
