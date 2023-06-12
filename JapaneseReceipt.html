@@ -68,8 +68,8 @@
         const selectedMenu = JSON.parse(localStorage.getItem("selectedMenu"));
         console.log(selectedMenu);
 
-        $menuName.innerHTML = selectedMenu.name;
-        $menuCal.innerHTML = selectedMenu.cal;
+        $menuName.textContent = selectedMenu.name;
+        $menuCal.textContent = selectedMenu.cal;
         $menuPrice.textContent = selectedMenu.price;
         $menuImg.src = `${selectedMenu.src}`;
         

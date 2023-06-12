@@ -91,8 +91,8 @@
         function setRandomMenu() {
             const randomMenu = getRandomMenu();
             imgElement.src = randomMenu.src;
-            nameElement.innerHTML = randomMenu.name;
-            detailElement.innerHTML = randomMenu.detail;
+            nameElement.textContent = randomMenu.name;
+            detailElement.textContent = randomMenu.detail;
 
             // 선택한 이미지 정보를 localStorage에 저장
             localStorage.setItem("selectedMenu", JSON.stringify(randomMenu));
