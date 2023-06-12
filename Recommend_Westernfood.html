@@ -21,8 +21,9 @@
         </div>
         <div id="buttons">
             <!-- &nbsp: 공백 -->
+            <!-- 25줄 "#"(앵커라 부름) => 용도 : 현재 페이지 링크 = Recommend_Westernfood.html -->
             <button id="otherMenu"><a href="#">다른 메뉴</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button id="chooseMenu" style="background-color: rgb(243, 156, 18);"><a href="Menu.html">메뉴 선택</a></button>
+            <button id="chooseMenu" style="background-color: rgb(243, 156, 18);"><a href="WesternReceipt.html">메뉴 선택</a></button>
         </div>
     </main>
 </body>
@@ -31,13 +32,38 @@
     const $menuName = document.querySelector('#menuName');  //메뉴 이름
     const $menuDetail = document.querySelector('#menuDetail');  //메뉴 세부
     const $otherMenu = document.querySelector('#otherMenu'); //다른 메뉴
+    const $chooseMenu = document.querySelector('#chooseMenu');  //메뉴 선택
 
     const WesternMenu = [   //크기 5인 배열, 양식 메뉴
-        { name : '피자', detail : '옛날 이탈리아에서 먹던 가정에서 구운 빵이 현대인의 입맞에 맞춰 개량된 음식이다. 빵 위에 토마토 소스를 바르고 위에 치즈, 햄, 양파, 버섯 등 여러 토핑을 올려져 있는게 특징이다.'},  //WesternMenu[0]
-        { name : '치킨', detail : '치킨'},  //WesternMenu[1]
-        { name : '파스타', detail : '파스타'},  //WesternMenu[2]
-        { name : '햄버거', detail : '햄버거'},  //WesternMenu[3]
-        { name : '스테이크', detail : '스테이크'},  //WesternMenu[4]
+        { name : '피자',
+        detail : '옛날 이탈리아에서 먹던 가정에서 구운 빵이 현대인의 입맞에 맞춰 개량된 음식이다. 빵 위에 토마토 소스를 바르고 위에 치즈, 햄, 양파, 버섯 등 여러 토핑을 올려져 있는게 특징이다.',
+        cal : '2300',
+        price : '20000'
+        },  //WesternMenu[0]
+        
+        { name : '치킨', 
+        detail : '미국 흑인 노예들이 백인 주인들이 먹고 남긴 자투리 닭고기들과 목화를 재배하는 과정에서 생긴 부산물인 면실유를 이용해 튀겨 먹은 것이 기원이다',
+        cal : '2000',
+        price : '18000'
+        },  //WesternMenu[1]
+        
+        { name : '파스타',
+        detail : '스파게티는 이탈리아 요리 중 하나로, 면과 소스가 결합된 전통적인 이탈리아 요리이다. 소스는 주로 토마토 소스, 올리브오일, 크림을 사용한다.',
+        cal : '900',
+        price : '12000'
+        },  //WesternMenu[2]
+        
+        { name : '햄버거',
+        detail : '햄버거는 둥근 빵 사이에 토마토, 양상추, 양파 같은 야채와 간고기로 만든 고기 패티를 넣어 먹는 패스트푸드이다. 햄버거의 기원은 명확하지 않다.',
+        cal : '500',
+        price : '6500'
+        },  //WesternMenu[3]
+        
+        { name : '스테이크',
+        detail : '스테이크라는 말은 ‘구이(roast)’를 의미하는 노르웨이 고어 ‘스테이크(steik)’에서 유래되었다. 스테이크에 적합한 고기는 마블링이 많은 고기이다.',
+        cal : '1000',
+        price : '20000'
+        },  //WesternMenu[4]
     ];
 
     let randMenu = Math.floor(Math.random() * 5);
@@ -47,6 +73,17 @@
     $menuDetail.textContent = WesternMenu[randMenu].detail;
     $menuImg.src = `Food.images/${WesternMenu[randMenu].name}.jpg`;
 
+    const selectedMenuLoadToWR = () => {   //메뉴 선택 버튼 눌렀을 경우 메뉴 정보 로컬 스토리지에 저장(WesternReceipt.html에서 사용하기 위함)
+        //localStorage.setItem('key',value);    key: data 식별자, value: 저장할 대상
+        localStorage.setItem('menuName', $menuName.textContent);    //key: menuName, 저장할 값: 메뉴 이름
+        localStorage.setItem('menuCal', WesternMenu[randMenu].cal); //key: menuCal, 저장할 값: 메뉴 칼로리
+        localStorage.setItem('menuPrice', WesternMenu[randMenu].price); //key: menuPrice, 저장할 값: 메뉴 가격
+    }
+    $chooseMenu.addEventListener('click',selectedMenuLoadToWR);
+    
+    
+    
+    
     const loadOtherMenu = () => {   //중복 방지
         let randMenuNew = Math.floor(Math.random() * 5);
 
@@ -58,10 +95,10 @@
         $menuDetail.textContent = WesternMenu[randMenuNew].detail;
         $menuImg.src = `Food.images/${WesternMenu[randMenuNew].name}.jpg`;
 
-        randMenu = randMenuNew; //...?
+        randMenu = randMenuNew;
 };
 
     $otherMenu.addEventListener('click',loadOtherMenu);
 </script>
-<!--fetch로 open API 이용해서 음식 칼로리 검색하면 알려주는 ?-->
+
 </html>
