@@ -1,31 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Recommend.css">
-    <title>일식 추천</title>
-</head>
-<body>
-    <header>
-        <div id="leftButton"><button id="otherType"><a href="#">다른 종류</a></button></div>
-        <div id="foodType" style="color: rgb(39, 174, 96);">일식</div>
-        </div>
-    </header>
-    <main>
-        <div id="img"><img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg"><!--메뉴 사진--></div>
-        <div id="detail">
-            <h2>비빔밥<!--메뉴 이름--></h2>
-            <p>비빔밥은 어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구<!--메뉴 설명--></p>
-        </div>
-        <div id="buttons">
-            <button id="otherMenu"><a href="Main.html">다른 메뉴</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button id="chooseMenu" style="background-color: rgb(39, 174, 96);"><a href="#">메뉴 선택</a></button>
-    </main>
-</body>
-<script>
-    
-</script>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="Recommend.css"/>
+        <title>일식 추천</title>
+    </head>
+    <body>
+        <header>
+            <div id="leftButton">
+                <button id="otherType">
+                    <a href="Main.html">다른 종류</a>
+                </button>
+            </div>
+            <div id="foodType" style="color: rgb(39, 174, 96)">일식</div>
+        </header>
+        <main>
+            <div id="img"><img src=""/></div>
+            <div id="detail">
+                <h2 id="menuName"></h2>
+                <p id="menuDetail"></p>
+            </div>
+            <div id="buttons">
+                <button id="otherMenu">
+                    <a>다른 메뉴</a>
+                </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="chooseMenu" style="background-color: rgb(39, 174, 96)">
+                    <a href="JapaneseReceipt.html">메뉴 선택</a>
+                </button>
+            </div>
+        </main>
+        <script>
+            const menuImages = [
+                "Food.images/돈까스.jpg",
+                "Food.images/소바.jpg",
+                "Food.images/알밥.jpg",
+                "Food.images/우동.jpg",
+                "Food.images/초밥.jpg",
+            ];
+
+            const JapaneseMenu = [
+                {
+                    name: "돈까스",
+                    detail: "돈까스는 두툼한 돼지고기를 소금과 후추로 간을 한 뒤 밀가루, 달걀 빵가루를 입혀 기름에 튀긴 요리이다.",
+                    cal: "568 kcal",
+                    price: "9000원",
+                    src: "Food.images/돈까스.jpg"
+                },
+                {
+                    name: "소바",
+                    detail: "소바는 메밀가루로 만든 국수를 뜨거운 국물이나 차가운 간장에 무, 파, 고추냉이를 넣고 찍어먹는 일본요리이다.",
+                    cal: "365 kcal",
+                    price: "9000원",
+                    src: "Food.images/소바.jpg"
+                },
+                {
+                    name: "알밥",
+                    detail: "알밥은 각종 생선의 알을 주재료로 하여 단무지, 김치, 무순, 계란, 오이, 맛살, 김가루 등을 넣어 비벼먹는 요리이다.",
+                    cal: "392 kcal",
+                    price: "8500원",
+                    src: "Food.images/알밥.jpg"
+                },
+                {
+                    name: "우동",
+                    detail: "우동은 밀가루를 주원료로 하여 만든 통통한 면을 익히고 다양한 고명을 올려 먹는 일본의 대표적인 요리이다.",
+                    cal: "403 kcal",
+                    price: "8500원",
+                    src: "Food.images/우동.jpg"
+                }, {
+                    name: "초밥",
+                    detail: "초밥은 소금과 식초, 설탕으로 간을 한 밥 위에 얇게 저민 생선이나 김, 달걀, 채소 등을 얹거나 말아 만드는 일본의 대표 요리이다.",
+                    cal: "492 kcal",
+                    price: "9500원",
+                    src: "Food.images/초밥.jpg"
+                },
+            ];
+
+            const imgElement = document.querySelector("#img img");
+            const nameElement = document.querySelector("#menuName");
+            const detailElement = document.querySelector("#menuDetail");
+            const otherMenuButton = document.querySelector("#otherMenu");
+
+            function getRandomMenu() {
+                const randomIndex = Math.floor(Math.random() * JapaneseMenu.length);
+                return JapaneseMenu[randomIndex];
+            }
+
+            function setRandomMenu() {
+                const randomMenu = getRandomMenu();
+                imgElement.src = randomMenu.src;
+                nameElement.innerHTML = randomMenu.name;
+                detailElement.innerHTML = randomMenu.detail;
+
+                // 선택한 이미지 정보를 localStorage에 저장
+                localStorage.setItem("selectedMenu", JSON.stringify(randomMenu));
+            }
+
+            // 페이지 로드 시 기본 이미지 설정
+            setRandomMenu();
+
+            otherMenuButton.addEventListener("click", function () {
+                setRandomMenu();
+            });
+        </script>
+    </body>
 </html>
-<!-- 음식 사진, 음식 이름,  간단한 메뉴설명(알러지나 기타사항)-->

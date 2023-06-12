@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="Recommend.css"/>
+        <title>일식 영수증</title>
+        <style>
+            #EImg {
+                float: left;
+                width: 40%;
+                height: 600px;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+            }
+            #EMain {
+                float: right;
+                width: 60%;
+                height: 800px;
+            }
+            #CImg {
+                align-self: flex-end;
+            }
+            .item-bg {
+                font-size: 40px;
+                text-align: center;
+                padding: 100px;
+                background-image: url("Food.images/영수증.jpeg");
+                background-position: center;
+                background-size: 500px;
+                background-repeat: no-repeat;
+            }
+            span {
+                display: inline;
+                line-height: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="EImg">
+            <a href="Main.html"><img src="" id="menuImg"/></a>
+        </div>
+        <div id="EMain">
+            <div class="item-bg">
+                <h2>오늘의 메뉴</h2>
+                <hr style="border-top: 2px dashed" width="50%"/>
+                <p>메뉴 이름 :
+                    <span id="menuName"></span>
+                </p>
+                <p>칼로리 :
+                    <span id="menuCal"></span>
+                </p>
+                <hr style="border-top: 2px dashed" width="50%"/>
+                <p>가격 :
+                    <span id="menuPrice"></span>
+                </p>
+            </div>
+        </div>
+
+        <script>
+            const $menuName = document.querySelector("#menuName");
+            const $menuCal = document.querySelector("#menuCal");
+            const $menuPrice = document.querySelector("#menuPrice");
+            const $menuImg = document.querySelector("#menuImg");
+
+            const selectedMenu = JSON.parse(localStorage.getItem("selectedMenu"));
+            console.log(selectedMenu);
+
+            $menuName.innerHTML = selectedMenu.name;
+            $menuCal.innerHTML = selectedMenu.cal;
+            $menuPrice.textContent = selectedMenu.price;
+            $menuImg.src = `${selectedMenu.src}`;
+        </script>
+    </body>
+</html>
