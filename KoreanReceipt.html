@@ -51,25 +51,24 @@
             <p>가격 : <span id="menuPrice"></span></p>
         </div>
     </div>
-
-    <script>
-        const $menuName = document.querySelector('#menuName');
-        const $menuCal = document.querySelector('#menuCal');
-        const $menuPrice = document.querySelector('#menuPrice');
-        const $menuImg = document.querySelector('#menuImg');
-
-        const urlParams = new URL(window.location.href).searchParams;
-
-        const menuName = urlParams.get('name');
-        const menuCal = urlParams.get('cal');
-        const menuPrice = urlParams.get('price');
-
-        console.log(menuName);
-
-        $menuName.textContent = menuName;
-        $menuCal.textContent = menuCal + "kcal";
-        $menuPrice.textContent = menuPrice + "원";
-        $menuImg.src = `Food.images/${menuName}.jpg`;
-    </script>
 </body>
+<script>
+    const $menuName = document.querySelector('#menuName');
+    const $menuCal = document.querySelector('#menuCal');
+    const $menuPrice = document.querySelector('#menuPrice');
+    const $menuImg = document.querySelector('#menuImg');
+
+    const urlParams = new URL(window.location.href).searchParams;
+
+    const menuName = urlParams.get('name');
+    const menuCal = urlParams.get('cal');
+    const menuPrice = urlParams.get('price');
+
+    console.log(menuName);
+
+    $menuName.textContent = menuName;
+    $menuCal.textContent = menuCal + "kcal";
+    $menuPrice.textContent = menuPrice + "원";
+    $menuImg.src = `Food.images/${menuName}.jpg`;
+</script>
 </html>
