@@ -23,7 +23,7 @@
       text-align: center;
     }
     #game_title {
-      font-size: 50px;
+      font-size: 60px;
       padding-bottom: 70px;
       text-align: center;
       margin: 0;
@@ -72,6 +72,7 @@
     <br>
     <button onclick="startGame()">시작</button>
     <button onclick="stopGame()">정지</button>
+    <button onclick="restartGame()">다시</button>
     <p><span id="result"></span></p>
   </div>
 
@@ -157,6 +158,10 @@
 
   const closeModal= () => {
     modalPopup.style.display = "none";
+  }
+
+  const restartGame = () => {
+    location.reload();
   }
 </script>
 </html>
