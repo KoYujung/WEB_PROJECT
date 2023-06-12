@@ -4,98 +4,146 @@
     <title>게임</title>
     <link rel="stylesheet" href="Recommend.css">
     <style>
-        input {
-            width: 75px;
-            height: 35px;
-            font-size: 25px;
-            border-radius: 5px;
-        }
-        button {
-            width: 100px;
-            height: 50px;
-            font-size: 30px;
-            border: 0;
-            border-radius: 10px;
-            margin: 10px;
-            cursor: pointer;
-        }
-        #main {
-            width: 70%;
-            margin: auto;
-            padding-top: 150px;
-            text-align: center;
-        }
-        #result {
-            color: rgb(231, 122, 100);
-        }
-        .name-input {
-            margin-left: 10px;
-        }
+      input {
+        width: 80px;
+        height: 35px;
+        font-size: 25px;
+        border-radius: 5px;
+      }
+      button {
+        width: 100px;
+        height: 50px;
+        font-size: 30px;
+        border: 0;
+        border-radius: 10px;
+        margin: 10px;
+        cursor: pointer;
+      }
+      #main {
+        width: 70%;
+        margin: auto;
+        padding-top: 80px;
+        text-align: center;
+      }
+      #result {
+        color: rgb(231, 122, 100);
+        font-size: 60px;
+      }
+      .name_input {
+        margin-left: 10px;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal_content {
+        background-color: #fefefe;
+        margin: 25% auto;
+        padding: 20px;
+        padding-top: 40px;
+        border: 1px solid #888;
+        width: 50%;
+        font-size: 30px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
-    <div id="leftButton"><button id="otherType"><a href="First.html">이전 화면</a></button></div>
+    <div id="leftButton">
+      <button id="otherType">
+        <a href="First.html">이전 화면</a>
+      </button>
+    </div>
     <div id="main">
-    <h1>참가 인원을 입력해주세요</h1>
-    <h1>인원 수 : <input type="number" id="count"></h1>
-    <div id="nameInputs">
-
+      <h1>참가 인원을 입력해주세요</h1>
+      <h1>인원 수 : <input type="number" id="count"></h1>
+      <div id="nameInputs"></div>
+      <br>
+      <button onclick="startGame()">시작</button>
+      <button onclick="stopGame()">정지</button>
+      <p><span id="result"></span></p>
     </div>
-    <br>
-    <button onclick="startGame()">시작</button>
-    <button onclick="stopGame()">정지</button>
-    <h1>당첨 : <span id="result"></span></h1>
-    </div>
-  </body>
-  <script>
 
-    var names = [];
-    var interval;
-    var countInput = document.getElementById("count");
-    var nameInputsContainer = document.getElementById("nameInputs");
-  
-    countInput.addEventListener("input", function () {
-      var count = parseInt(countInput.value);
-  
-      while (nameInputsContainer.firstChild) {
-        nameInputsContainer.removeChild(nameInputsContainer.firstChild);
-      }
-  
-      for (var i = 0; i < count; i++) {
-        var nameInput = document.createElement("input");
-        nameInput.setAttribute("class", "name name-input");
-        nameInput.setAttribute("placeholder", "이름 " + (i + 1));
-        nameInputsContainer.appendChild(nameInput);
-      }
-    });
-  
-    function startGame() {
+    <div id="modalPopup" class="modal">
+      <div class="modal_content">
+        <span id="modalMessage"></span><br><br>
+        <button onclick="closeModal()">닫기</button>
+      </div>
+    </div>
+
+    <script>
+      var names = [];
+      var interval;
       var countInput = document.getElementById("count");
-      var nameInputs = document.getElementsByClassName("name");
-  
-      var count = parseInt(countInput.value);
+      var nameInputsContainer = document.getElementById("nameInputs");
+      var modalPopup = document.getElementById("modalPopup");
+      var modalMessage = document.getElementById("modalMessage");
 
-      if (isNaN(count) || count <= 0) {
-        alert("인원 수를 입력해주세요.");
-        return;
-      }
-  
-      for (var i = 0; i < count; i++) {
-        names.push(nameInputs[i].value);
-      }
-  
-      var result = document.getElementById("result");
-      var index = 0;
-      interval = setInterval(function () {
-        result.innerHTML = names[index];
-        index = (index + 1) % count;
-      }, 50);
-    }
-  
-    function stopGame() {
-      clearInterval(interval);
-    }
+      countInput.addEventListener("input", function () {
+        var count = parseInt(countInput.value);
 
-  </script>
-  
+        while (nameInputsContainer.firstChild) {
+          nameInputsContainer.removeChild(nameInputsContainer.firstChild);
+        }
+
+        for (var i = 0; i < count; i++) {
+          var nameInput = document.createElement("input");
+          nameInput.setAttribute("class", "name name_input");
+          nameInput.setAttribute("placeholder", "이름 " + (i + 1));
+          nameInputsContainer.appendChild(nameInput);
+        }
+      });
+
+      function startGame() {
+        var countInput = document.getElementById("count");
+        var nameInputs = document.getElementsByClassName("name");
+
+        var count = parseInt(countInput.value);
+
+        if (isNaN(count) || count <= 0) {
+          alert("옳바른 인원 수를 입력해주세요.");
+          return;
+        }
+
+        for (var i = 0; i < count; i++) {
+          names.push(nameInputs[i].value);
+        }
+
+        var result = document.getElementById("result");
+        var index = 0;
+        interval = setInterval(function () {
+          result.innerHTML = names[index];
+          index = (index + 1) % count;
+        }, 50);
+      }
+      function stopGame() {
+        clearInterval(interval);
+        var result = document.getElementById("result");
+        var winnerName = result.innerHTML;
+        if (winnerName) {
+          setTimeout(function () {
+            showModal("<span style='color: rgb(231, 122, 100);'>" + winnerName + "</span>" + " 님께서 당첨되었습니다 !");
+          }, 400);
+        } else {
+          alert("게임이 시작되지 않았습니다.");
+        }
+      }
+
+      function showModal(message) {
+        modalMessage.innerHTML = message;
+        modalPopup.style.display = "block";
+      }
+
+      function closeModal() {
+        modalPopup.style.display = "none";
+      }
+    </script>
+  </body>
 </html>
