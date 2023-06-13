@@ -25,7 +25,7 @@
         function startGame() {
             var countInput = document.getElementById("count");
             var nameInputs = document.getElementsByClassName("name");
-
+            
             // 인원수와 이름들을 가져옴
             var count = parseInt(countInput.value);
             for (var i = 0; i < count; i++) {
@@ -45,23 +45,31 @@
             clearInterval(interval);
         }
         var countInput = document.getElementById("count");
-      var nameInputsContainer = document.getElementById("nameInputs");
+        var nameInputsContainer = document.getElementById("nameInputs");
 
-      countInput.addEventListener("input", function () {
-        var count = parseInt(countInput.value);
+        countInput.addEventListener("input", function () {
+            var count = parseInt(countInput.value);
 
-        // 기존에 생성된 이름 입력 필드 삭제
-        while (nameInputsContainer.firstChild) {
-          nameInputsContainer.removeChild(nameInputsContainer.firstChild);
-        }
+            if (isNaN(count) || count <= 0) {
+                alert("올바르지 않은 인원 수 입니다!");
+                $input.focus();
+                return;
+            }
 
-        // 새로운 이름 입력 필드 생성
-        for (var i = 0; i < count; i++) {
-          var nameInput = document.createElement("input");
-          nameInput.setAttribute("class", "name");
-          nameInput.setAttribute("placeholder", "이름 " + (i + 1));
-          nameInputsContainer.appendChild(nameInput);
-        }
-      });
+            while (nameInputsContainer.firstChild) {
+                nameInputsContainer.removeChild(nameInputsContainer.firstChild);
+            }
+
+            for (var i = 0; i < count; i++) {
+                var nameInput = document.createElement("input");
+                nameInput.setAttribute("class", "name");
+                nameInput.setAttribute("placeholder", "이름 " + (
+                    i + 1
+                ));
+                nameInputsContainer.appendChild(nameInput);
+
+            }
+        });
     </script>
 </html>
+
