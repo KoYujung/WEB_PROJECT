@@ -94,11 +94,11 @@
             nameElement.textContent = randomMenu.name;
             detailElement.textContent = randomMenu.detail;
 
-            // 선택한 이미지 정보를 localStorage에 저장
+           
             localStorage.setItem("selectedMenu", JSON.stringify(randomMenu));
         }
 
-        // 페이지 로드 시 기본 이미지 설정
+        
         setRandomMenu();
         
         otherMenuButton.addEventListener("click", function () {

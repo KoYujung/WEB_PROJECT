@@ -66,10 +66,10 @@
 
         console.log(menuName);
 
-        $menuName.textContent = menuName || ''; // null 값일 경우를 대비하여 기본값 설정
-$menuCal.textContent = menuCal ? menuCal + "kcal" : ''; // null 값일 경우를 대비하여 기본값 설정
-$menuPrice.textContent = menuPrice ? menuPrice + "원" : ''; // null 값일 경우를 대비하여 기본값 설정
-$menuImg.src = menuName ? `Food.images/${menuName}.png` : ''; // null 값일 경우를 대비하여 기본값 설정
+        $menuName.textContent = menuName || '';
+$menuCal.textContent = menuCal ? menuCal + "kcal" : '';
+$menuPrice.textContent = menuPrice ? menuPrice + "원" : '';
+$menuImg.src = menuName ? `Food.images/${menuName}.png` : '';
     </script>
 </body>
 </html>
