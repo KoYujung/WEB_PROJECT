@@ -129,7 +129,7 @@
 
     const result = document.getElementById("result");
     var index = 0;
-    interval = setInterval(function () {
+    interval = setInterval(() => {
       result.innerHTML = names[index];
       index = (index + 1) % count;
     }, 50);
@@ -143,7 +143,7 @@
     const result = document.getElementById("result");
     const winnerName = result.innerHTML;
     if (winnerName) {
-      setTimeout(function () {
+      setTimeout(() => {
         showModal("<span style='color: rgb(231, 122, 100);'>" + winnerName + "</span>" + " 님께서 당첨되었습니다 !");
       }, 400);
     } else {
