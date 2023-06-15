@@ -91,13 +91,13 @@
   const modalPopup = document.getElementById("modal_popup");
   const modalMessage = document.getElementById("modalMessage");
 
-  countInput.addEventListener("input", function () { 
+  countInput.addEventListener("input", function () {
     const count = parseInt(countInput.value);
 
     while (nameInputsContainer.firstChild) {
       nameInputsContainer.removeChild(nameInputsContainer.firstChild);
     }
-
+    
     for (var i = 0; i < count; i++) {
       var nameInput = document.createElement("input");
       nameInput.setAttribute("class", "name");
